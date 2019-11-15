@@ -1,18 +1,35 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { getToken } from './utils/axiosWithAuth';
+// component imports
+import PrivateRoute from './components/PrivateRoute';
+import Welcome from './components/Welcome';
+import Login from './components/Login';
+import MyAccount from './components/MyAccount';
 
-import Login from "./components/Login";
-import "./styles.scss";
+import './styles.scss';
 
 function App() {
+  const loggedIn = getToken();
+
+  // logout function
+  const logout = () => {
+    localStorage.removeItem('token');
+  }
+
   return (
     <Router>
-      <div className="App">
-        <Route exact path="/" component={Login} />
-        {/* 
-          Build a PrivateRoute component that will 
-          display BubblePage when you're authenticated 
-        */}
+      <div className='App'>
+        <nav>
+          <Link to='/'>Home</Link>
+          {!loggedIn && <Link to='/login'>Login</Link>}
+          {loggedIn && <Link to='/account'>My Account</Link>}
+          <Link to='/' onClick={logout}>Logout</Link>
+        </nav>
+
+        <Route exact path='/' component={Welcome} />
+        <Route exact path='/login' component={Login} />
+        <PrivateRoute exact path='/account' component={MyAccount} />
       </div>
     </Router>
   );

@@ -33,7 +33,6 @@ const Login = props => {
 
   return (
     <>
-      <h1>Welcome to the Bubble App!</h1>
       <form onSubmit={handleSubmit}>
         {error && <div className='error'>{error}</div>}
 
