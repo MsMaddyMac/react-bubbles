@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 
 const initialColor = {
   color: "",
@@ -21,10 +21,24 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    updateColors(
+      colors.map(color => {
+        if (colorToEdit.id === color.id) { 
+          return colorToEdit;
+        }
+        return color;
+      })
+    );
+    setEditing(false);
   };
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    const newColorList = colors.filter(c => {
+      return c.id !== color.id;
+    });
+    updateColors(newColorList);
+    setEditing(false);
   };
 
   return (

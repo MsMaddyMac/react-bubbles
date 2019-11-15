@@ -23,7 +23,8 @@ const Login = props => {
     axiosWithAuth()
     .post('/login', data)
     .then(res => {
-      localStorage.setItem('token', res.data.token)
+      console.log('Login', res);
+      localStorage.setItem('token', res.data.payload)
       props.history.push('/account')
     })
     .catch(err => {
@@ -40,6 +41,7 @@ const Login = props => {
           type='username'
           name='username'
           placeholder='Username'
+          autoComplete='off'
           value={data.username}
           onChange={handleChange}
         />
@@ -47,6 +49,7 @@ const Login = props => {
           type='password'
           name='password'
           placeholder='Password'
+          autoComplete='off'
           value={data.password}
           onChange={handleChange}
         />
