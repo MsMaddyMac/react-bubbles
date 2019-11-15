@@ -7,7 +7,6 @@ import Welcome from './components/Welcome';
 import Login from './components/Login';
 import MyAccount from './components/MyAccount';
 // styling imports
-// import BubblesImage from './images/bubbles.jpg';
 import './styles.scss';
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
           {loggedIn && <Link to='/account'>My Account</Link>}
           <Link to='/' onClick={logout}>Logout</Link>
         </nav>
-        {/* <img src={BubblesImage} alt="Bubbles" /> */}
+      
         <Route exact path='/' component={Welcome} />
         <Route exact path='/login' component={Login} />
         <PrivateRoute exact path='/account' component={MyAccount} />
