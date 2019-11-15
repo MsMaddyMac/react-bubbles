@@ -34,8 +34,8 @@ const ColorList = ({ colors, updateColors }) => {
 
   const deleteColor = color => {
     // make a delete request to delete this color
-    const newColorList = colors.filter(c => {
-      return c.id !== color.id;
+    const newColorList = colors.filter(col => {
+      return col.id !== color.id;
     });
     updateColors(newColorList);
     setEditing(false);
