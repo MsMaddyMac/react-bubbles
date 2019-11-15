@@ -5,8 +5,10 @@ function MyAccount() {
     
     return (
         <>
-            <h2>My Account</h2>
-            <BubblePage />
+            <h2>My Bubbles!</h2>
+            <div className="Bubble-page">
+                <BubblePage />
+            </div>
         </>
     )
 }
