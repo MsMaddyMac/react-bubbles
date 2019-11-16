@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // to use axiosWithAuth
 import axiosWithAuth from '../utils/axiosWithAuth';
 
@@ -10,6 +10,13 @@ const Login = props => {
     username: '',
     password: ''
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      props.history.push('/account')
+    }
+  }, [])
 
   const handleChange = e => {
     setData({

@@ -9,7 +9,6 @@ import MyAccount from './components/MyAccount';
 import './styles.scss';
 
 
-
 function App() {
     
   // logout function
@@ -26,10 +25,9 @@ function App() {
           <Link to='/account'>My Account</Link>
           <Link to='/' onClick={logout}>Logout</Link>
         </nav>
-      
+        <Switch>
           <Route exact path='/' component={Welcome} />
           <Route exact path='/login' component={Login} />
-        <Switch>
           <PrivateRoute exact path='/account' component={MyAccount} />
         </Switch>
       </div>
