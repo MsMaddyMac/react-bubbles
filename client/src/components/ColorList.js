@@ -25,6 +25,7 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
     .put(`/colors/${colorToEdit.id}`, colorToEdit)
     .then(res => updateColors(colors.map(color => {
+      console.log('Edit colors', res);
         if (color.id === res.data.id) {
           return res.data
         } else {
@@ -40,6 +41,7 @@ const ColorList = ({ colors, updateColors }) => {
      axiosWithAuth()
      .delete(`/colors/${color.id}`)
      .then(res => {
+       console.log('delete', res);
        updateColors(colors.filter(col => {
          return col.id !== res.data;
        }))

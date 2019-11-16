@@ -13,10 +13,10 @@ const Login = props => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
+    {token &&
       props.history.push('/account')
     }
-  }, [])
+  }, [data])
 
   const handleChange = e => {
     setData({
@@ -36,7 +36,7 @@ const Login = props => {
       props.history.push('/account');
     })
     .catch(err => {
-      setError(err.response.data.error)
+      setError('Login Error!', err)
     })
   };
 
