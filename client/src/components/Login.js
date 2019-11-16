@@ -25,10 +25,11 @@ const Login = props => {
     .then(res => {
       console.log('Login', res);
       localStorage.setItem('token', res.data.payload)
-      props.history.push('/account')
+      
+      props.history.push('/account');
     })
     .catch(err => {
-      setError(err.response.data)
+      setError(err.response.data.error)
     })
   };
 
